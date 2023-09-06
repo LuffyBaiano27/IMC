@@ -1,0 +1,113 @@
+// Copyright (c) 2019, the Dart project authors.  Please see the AUTHORS file
+// for details. All rights reserved. Use of this source code is governed by a
+// BSD-style license that can be found in the LICENSE file.
+
+import 'package:flutter/material.dart';
+
+void main() => runApp(MyApp());
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
+      ),
+      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+    );
+  }
+}
+
+class MyHomePage extends StatefulWidget {
+  final String title;
+
+  const MyHomePage({
+    Key? key,
+    required this.title,
+  }) : super(key: key);
+
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+
+  
+ final formKey = GlobalKey<FormState>();
+ final pesoEC = TextEditingController();
+ final alturaEC = TextEditingController();
+ Color? cor;
+ double? imc;
+ String? text;
+ 
+  void calcular(double altura, double peso)
+    
+    if
+  
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold (
+      appBar: AppBar (
+       centerTitle: true,
+        backgroundColor: Colors.green,
+        title: const Text("IMC",
+           style: TextStyle(
+           color: Colors.white,
+           fontSize:25,
+           fontWeight: FontWeight.w500),),
+        ), //appbar
+      body: Form(
+        key:formKey,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children:[
+          Padding(padding: const EdgeInsets.all (20),
+          child:TextFormField(
+            keyboardType: TextInputType.number,
+            validator: (value){
+              final texto = double.tryParse(alturaEC.text);
+              if(texto==null){
+                return "Numero invalido";
+              }
+              if( value!.isEmpty){
+                return "Altura obrigatoria";
+              }
+            }, 
+            controller: alturaEC,
+            decoration: InputDecoration(
+              label:Text("Altura"),
+              labelStyle: TextStyle(fontSize: 15,)
+            ),
+          ),
+         ),
+              Padding(padding: const EdgeInsets.all (20),
+          child:TextFormField(
+            controller: pesoEC,
+            decoration: InputDecoration(
+              label:Text("Peso"),
+              labelStyle: TextStyle(fontSize: 15,)
+            ),
+          ),
+         ),
+            ElevatedButton(onPressed:(){
+              
+              var altura = double.parse(alturaEC.text);
+              var peso = double.parse(pesoEC.text);
+              
+              setState((){calcular (peso,altura);});
+              
+            }, child: const Text("calcular",style: TextStyle(fontSize:20),),
+          ),  const SizedBox( height: 20,) (imc !=null)?
+            Padding(padding:EdgeInsets.all(20),
+                   child: ListTitle( Text("IMC = ${imc!.toStringAsFixed(2)}"),
+                                   subtitle: Text(text!),),)
+            : const SizedBox(),
+        ],),
+      ),//form
+    ); //Scaffold
+      
+}
+}
